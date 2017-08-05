@@ -3,6 +3,8 @@ from flask import request
 from datetime import datetime
 import os
 import shutil
+from PIL import Image
+import numpy as np
 
 
 class ImgServ():
@@ -19,12 +21,21 @@ class ImgServ():
         self.image_format = image_format
         self.datetime_delimiter = datetime_delimiter
 
+        def imgToNp(imgPath, dtype='int32'):
+            image = Image.open(imgPath)
+            image.load()
+            npArr = np.asarray(image, dtype=dtype)
+            image.close()
+            return npArr
+
+
         @self.app.route('/', methods=['POST'])
         def serve():
-            #imgName = self.image_prefix + str(datetime.now())[:-7].replace(':', self.datetime_delimiter) + self.image_format
-            #request.files[self.incoming_fname].save(self.save_loc)
-            handler()
-            return "Success"
+            imgName = self.image_prefix + str(datetime.now())[:-7].replace(':', self.datetime_delimiter) + self.image_format
+            save_path = os.path.join(self.save_loc, imgName)
+            request.files[self.incoming_fname].save(save_path)
+            npImage = imgToNp(save_path)
+            return handler(npImage)
 
 
     def run(self, threaded = True):
