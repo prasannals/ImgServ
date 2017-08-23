@@ -14,7 +14,7 @@ class RaspiClient():
         self.exitKey = exitKey
         self.captureKey = captureKey
 
-    def start(self):
+    def run(self):
         cam = PiCamera()
         cam.start_preview()
 
@@ -28,7 +28,7 @@ class RaspiClient():
                     r = requests.post(self.url, files={self.filename: f})
                     if handler is not None:
                         handler(r)
-                    
+
             elif response == self.exitKey:
                 break
 

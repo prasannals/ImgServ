@@ -14,7 +14,7 @@ class DesktopClient():
         self.exitKey = exitKey
         self.captureKey = captureKey
 
-    def start(self):
+    def run(self):
         cam = cv2.VideoCapture(0)
         while(True):
             _ , frame = cam.read()
