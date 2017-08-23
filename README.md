@@ -2,6 +2,10 @@
 
 Library which helps with sending and receiving images. Developed to help people focus on the image processing more without having to worry about the networking aspects.
 
+## Installation 
+
+pip install img_serv
+
 ## Usage
 
 ### Server Side
