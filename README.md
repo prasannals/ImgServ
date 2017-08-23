@@ -12,7 +12,8 @@ def handler(image):
     # process image
     return 'Image recieved'  #or anything else that you would like to return to client
 
-im = ImgServ(handler)
+im = ImgServ(handler, host = '0.0.0.0', port_number = 12222, save_loc = '.', incoming_fname = 'image.jpg', image_prefix = 'img_', image_format = '.jpg', datetime_delimiter = '_')
+
 im.run()
 ```
 
