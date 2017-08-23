@@ -36,6 +36,3 @@ class DesktopClient():
         cam.release()
         cv2.destroyAllWindows()
 
-client = DesktopClient()
-
-client.start()

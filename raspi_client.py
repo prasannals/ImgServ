@@ -14,7 +14,7 @@ class RaspiClient():
         self.exitKey = exitKey
         self.captureKey = captureKey
 
-    def run(self):
+    def start(self):
         cam = PiCamera()
         cam.start_preview()
 
@@ -32,5 +32,3 @@ class RaspiClient():
         cam.stop_preview()
 
 
-client = RaspiClient()
-client.run()
