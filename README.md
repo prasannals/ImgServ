@@ -10,7 +10,7 @@ pip install img_serv
 
 ### Server Side
 ```
-from server import ImgServ
+from img_serv.server import ImgServ
 
 def handler(image):
     # process image
@@ -25,14 +25,14 @@ im.run()
 
 #### Desktop Client 
 ```
+from img_serv.desktop_client import DesktopClient
 client = DesktopClient(filename = 'image.jpg', location = 'images', ip = 'localhost', port = 12222, exitKey = 'x', captureKey = 'c', windowTitle = 'ImgServ DesktopClient')
-
 client.start()
 ```
 
 #### RaspberryPi Client 
 ```
+from img_serv.raspi_client import RaspiClient
 client = RaspiClient(filename = 'image.jpg', location = 'images', ip = 'localhost', port = 12222, exitKey = 'x', captureKey = 'c', windowTitle = 'ImgServ DesktopClient')
-
 client.start()
 ```
